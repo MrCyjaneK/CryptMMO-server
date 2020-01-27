@@ -18,6 +18,7 @@ if ($check == []) {
     $user->execute();
     $user = $user->fetchAll()[0];
     foreach ($user as $key => $value) {
+        if (is_numeric($key)) continue;
         $response[$key] = $value;
     }
 }
