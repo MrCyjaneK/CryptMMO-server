@@ -21,6 +21,7 @@ include getcwd() . '/db.php';
 include getcwd() . '/functions/kill.php';
 include getcwd() . '/functions/generateRandomString.php';
 include getcwd() . '/functions/checkRequest.php';
+include getcwd() . '/functions/getString.php';
 $request = json_decode((file_get_contents("php://input")));
 $response = [];
 checkRequest($request);
