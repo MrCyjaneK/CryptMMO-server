@@ -16,7 +16,7 @@ if ($check == []) {
     foreach ($categories as $category) {
         $response['categories'][] = [
             "id" => $category['ID'],
-            "name" => $category['type'], // CATEGORY->TYPE->SWORD...
+            "name" => getString($category['type']), // CATEGORY->TYPE->SWORD...
             "description" => "#TODO"
         ];
     }

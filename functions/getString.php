@@ -1,10 +1,14 @@
 <?php
 // Copied from old game source
 // Don't set $try in requests
-function getString($textname, $language = "EN", $try = 0, $default = '++++ THIS STRING IS NOT TRANSLATED, <a href="/game.php?action=translate">CONTRIBUTE</a> ++++') {
+function getString($textname, $language = "getUserLang", $try = 0, $default = '++++ THIS STRING IS NOT TRANSLATED, <a href="/game.php?action=translate">CONTRIBUTE</a> ++++') {
     $link = "https://dogemmo.mrcyjanek.net/game.php?action=translate&textname=".urlencode($textname)."&language=".urlencode($language);
     $default_text = '++++ THIS STRING IS NOT TRANSLATED, <a href="/game.php?action=translate">CONTRIBUTE</a> ++++';
     $textname = strtoupper($textname);
+    global $user;
+    if ($language == 'getUserLang') {
+        $language = isset($user->langcode) ? $user->langcode : 'EN';
+    }
     $language = strtoupper($language);
     global $db;
     $query = $db->prepare("SELECT * FROM `translation` WHERE `textname`=:textname AND language=:language");

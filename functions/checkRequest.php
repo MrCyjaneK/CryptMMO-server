@@ -2,6 +2,7 @@
 function checkRequest($request) {
     global $response;
     global $db;
+    include getcwd() . '/functions/getUser.php'; // Actually, not a function. this sets the '$user' varible
     if ($request == null) {
         kill("Empty or invalid request provided");
     }

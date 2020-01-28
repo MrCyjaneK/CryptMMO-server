@@ -20,8 +20,9 @@ include getcwd() . '/config.php';
 include getcwd() . '/db.php';
 include getcwd() . '/functions/kill.php';
 include getcwd() . '/functions/generateRandomString.php';
-include getcwd() . '/functions/checkRequest.php';
 include getcwd() . '/functions/getString.php';
+include getcwd() . '/functions/checkRequest.php'; // Process request
+
 $request = json_decode((file_get_contents("php://input")));
 $response = [];
 checkRequest($request);
