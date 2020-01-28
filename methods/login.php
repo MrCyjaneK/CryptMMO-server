@@ -9,14 +9,15 @@ if (!isset($isvalid->email)) {
 // Create user account, and/or login.
 $email = $isvalid->email;
 // Check if exists
-$check = $db->prepare("SELECR * FROM `auth_accounts` WHERE `email`=:email");
+$check = $db->prepare("SELECT * FROM `auth_accounts` WHERE `email`=:email");
 $check->bindParam(":email", $email);
 $check->execute();
 $check = $check->fetchAll();
-$cookie = generateRandomString(128);
+$cookie = generateRandomString(256);
+//throw new Exception (print_r($check,1).PHP_EOL.print_r($email,1));
 if ($check == []) {
     // Create account
-    $hash = generateRandomString(512);
+    $hash = generateRandomString(2048);
     $username = explode('@',$email)[0]."_".generateRandomString(5);
     $create_account = $db->prepare("INSERT INTO `users`(`username`,`linked_hash`) VALUES (:username, :hash)");
     $create_account->bindParam(":username",$username);
