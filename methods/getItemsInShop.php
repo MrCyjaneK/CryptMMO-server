@@ -9,7 +9,8 @@ if ($check == []) {
     kill("Unauthorised");
 }
 // Fetch all items
-$items = $db->prepare("SELECT * FROM shop_items WHERE 1");
+$items = $db->prepare("SELECT * FROM `shop_items` WHERE `type`=:type");
+$items->bindParam(":type", $request->params->category);
 $items->execute();
 $items = $items->fetchAll();
 
