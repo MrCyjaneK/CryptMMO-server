@@ -18,6 +18,7 @@ function getString($textname, $language = "getUserLang", $try = 0, $default = '+
     $query = $query->fetchAll();
     if ($query == []) {
         // Eh... No translation found, insert default and beg for contribution
+        //TODO: Some anti DoS would be welcone
         $insert = $db->prepare("INSERT INTO `translation`(`textname`, `language`, `text`) VALUES (:textname, :language, :text)");
         $insert->bindParam(":textname",$textname);
         $insert->bindParam(":language",$language);
