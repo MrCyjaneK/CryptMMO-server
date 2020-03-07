@@ -48,6 +48,15 @@ if ($check == []) {
                     "action" => "render:Tavern",
                     "size" => "50%"
                 ],
+            ],
+            [
+                [
+                    "text" => "Walk",
+                    "icon" => "Walk",
+                    "key" => "castleWalk",
+                    "action" => "render:Walk",
+                    "size" => "100%"
+                ],
             ]
         ];
 }
